@@ -12,5 +12,8 @@ docs/reference/download-stats.md
 __pycache__/
 *.pyc
 
+# Pycharm
+.idea/
+
 # Personal Claude Code permission overrides
 .claude/settings.local.json

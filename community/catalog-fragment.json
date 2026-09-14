@@ -1079,6 +1079,7 @@
             "padding": 4.375,
             "iconSize": 10.0,
             "labelSize": 5.625,
+            "mediaTitleSize": 8.75,
             "coverArtTitleSize": 17.5,
             "coverArtArtistSize": 10.0,
             "labelLines": 2,
