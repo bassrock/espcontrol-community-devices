@@ -106,6 +106,52 @@ lvgl:
           on_press:
             then:
               - script.execute: network_status_open_info
+              # The Settings page's device-name card anchors its icon to the
+              # card's top edge and its label to the bottom, with no height
+              # bound on the label (see create_dynamic_card_slot() in
+              # upstream's button_grid_subpages.h). A long friendly_name wraps
+              # to four lines, grows upward from the bottom anchor, and lands
+              # on top of the icon.
+              #
+              # Ours are long because they carry "(Community)" plus the MAC
+              # suffix ESPHome appends, so we hit this where upstream's own
+              # ~25-character names do not.
+              #
+              # Hiding that one icon costs nothing: it is U+F0200, the exact
+              # same glyph the IP-address card already uses, so it conveys no
+              # information the card does not. Upstream hides card icons the
+              # same way when a card shows a sensor value instead.
+              #
+              # Matched by label text rather than child index: if upstream
+              # reorders the card's children this finds nothing and leaves the
+              # display untouched, rather than hiding the wrong element.
+              - lambda: |-
+                  auto &ui = network_status_modal_ui();
+                  if (ui.overlay == nullptr) return;
+                  const std::string name = esphome::App.get_friendly_name();
+                  if (name.empty()) return;
+                  for (uint32_t c = 0; c < lv_obj_get_child_cnt(ui.overlay); ++c) {
+                    lv_obj_t *card = lv_obj_get_child(ui.overlay, c);
+                    if (card == nullptr) continue;
+                    const uint32_t kids = lv_obj_get_child_cnt(card);
+                    lv_obj_t *icon = nullptr;
+                    bool is_name_card = false;
+                    for (uint32_t k = 0; k < kids; ++k) {
+                      lv_obj_t *child = lv_obj_get_child(card, k);
+                      // A card also holds a non-label sensor container;
+                      // lv_label_get_text() on that is undefined.
+                      if (child == nullptr ||
+                          !lv_obj_check_type(child, &lv_label_class)) continue;
+                      const char *text = lv_label_get_text(child);
+                      if (text == nullptr) continue;
+                      if (name == text) is_name_card = true;
+                      else if (icon == nullptr && text[0] != '\0') icon = child;
+                    }
+                    if (is_name_card && icon != nullptr) {
+                      lv_obj_add_flag(icon, LV_OBJ_FLAG_HIDDEN);
+                      break;
+                    }
+                  }
 
       # Night mode indicator (schedule night period only). Starts hidden;
       # clock_bar_apply positions and reveals it beside the network icon, so the
