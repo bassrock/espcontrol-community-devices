@@ -7,6 +7,11 @@
       "label": "device:guition-esp32-s3-jc3248w535"
     },
     {
+      "slug": "guition-esp32-s3-jc8048w550",
+      "name": "Guition JC8048W550",
+      "label": "device:guition-esp32-s3-jc8048w550"
+    },
+    {
       "slug": "m5stack-esp32-p4-tab5",
       "name": "M5Stack Tab5",
       "label": "device:m5stack-esp32-p4-tab5"

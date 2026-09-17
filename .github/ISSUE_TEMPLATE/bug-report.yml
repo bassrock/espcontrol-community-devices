@@ -17,6 +17,7 @@ body:
       description: The community device this issue is about.
       options:
         - Guition ESP32-S3-JC3248W535
+        - Guition JC8048W550
         - M5Stack Tab5
         - M5Stack Tab5 (V1)
         - Seeed reTerminal D1001

@@ -148,6 +148,18 @@ guition-esp32-s3-jc3248w535:
     - components/**
     - src/**
 
+guition-esp32-s3-jc8048w550:
+  allowed:
+    - devices/guition-esp32-s3-jc8048w550/**
+    - builds/guition-esp32-s3-jc8048w550*.yaml
+  required:
+    - devices/guition-esp32-s3-jc8048w550/esphome.yaml
+    - devices/guition-esp32-s3-jc8048w550/packages.yaml
+    - devices/guition-esp32-s3-jc8048w550/device/device.yaml
+  forbidden:
+    - components/**
+    - src/**
+
 seeed-esp32-p4-reterminal-d1001:
   allowed:
     - devices/seeed-esp32-p4-reterminal-d1001/**
