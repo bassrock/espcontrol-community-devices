@@ -8,11 +8,11 @@
 
 substitutions:
   cover_art_placeholder_file: "https://raw.githubusercontent.com/jtenniswood/espcontrol/main/common/assets/cover_art_placeholder.svg"
-  device_slug: "wireless-tag-wt32-sc01-plus"
-  firmware_manifest_slug: "wireless-tag-wt32-sc01-plus"
+  device_slug: "waveshare-esp32-s3-smart-86-box"
+  firmware_manifest_slug: "waveshare-esp32-s3-smart-86-box"
   firmware_version: "dev"
   screen_width: "480"
-  screen_height: "320"
+  screen_height: "480"
   content_width: "380"
   setup_icon_font_id: font_icon_main
   setup_title_font_id: font_text_title
@@ -44,32 +44,32 @@ substitutions:
   voice_interaction_active_condition: "false"
   clock_font_size: "160"
   clock_cx: "240"
-  clock_cy: "160"
+  clock_cy: "240"
   screen_saver_clock_min_brightness: "1"
   screen_saver_clock_default_brightness: "35"
   screen_schedule_clock_min_brightness: "1"
   screen_schedule_clock_default_brightness: "10"
-  cover_art_size: "320"
-  cover_art_decode_size: "240"
+  cover_art_size: "480"
+  cover_art_decode_size: "320"
   cover_art_x: "0"
   cover_art_y: "0"
   cover_art_accent_x: "0"
   cover_art_accent_y: "0"
   cover_art_accent_width: "480"
-  cover_art_accent_height: "320"
+  cover_art_accent_height: "480"
   cover_art_accent_bg_opa: "80%"
   cover_art_accent_opa: "80%"
   cover_art_panel_x: "0"
   cover_art_panel_y: "0"
   cover_art_panel_width: "480"
-  cover_art_panel_height: "320"
+  cover_art_panel_height: "480"
   cover_art_panel_pad_top: "24"
   cover_art_panel_pad_bottom: "16"
   cover_art_panel_pad_left: "24"
   cover_art_panel_pad_right: "24"
   cover_art_panel_pad_row: "0"
   cover_art_title_font: "font_cover_art_title"
-  cover_art_title_max_height: "200"
+  cover_art_title_max_height: "330"
   cover_art_title_line_space: "0"
   cover_art_artist_font: "font_cover_art_artist"
   cover_art_artist_pad_top: "6"
@@ -119,6 +119,12 @@ packages:
         vars: { num: "5" }
       - path: common/config/button_template_4chunk.yaml
         vars: { num: "6" }
+      - path: common/config/button_template_4chunk.yaml
+        vars: { num: "7" }
+      - path: common/config/button_template_4chunk.yaml
+        vars: { num: "8" }
+      - path: common/config/button_template_4chunk.yaml
+        vars: { num: "9" }
       # END GENERATED BUTTON PACKAGES
       - common/addon/connectivity.yaml
       - common/addon/time.yaml
