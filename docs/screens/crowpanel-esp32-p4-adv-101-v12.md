@@ -1,6 +1,6 @@
 ---
-title: 10.1-inch Waveshare ESP32-P4-WIFI6-Touch-LCD-10.1
-description: "Community EspControl build for the Waveshare ESP32-P4-WIFI6-Touch-LCD-10.1 — 10.1 inches 1280 x 800 landscape touchscreen with 20 cards, powered by ESP32-P4."
+title: 10.1-inch Elecrow CrowPanel Advanced 10.1 ESP32-P4 (V1.2)
+description: "Community EspControl build for the Elecrow CrowPanel Advanced 10.1 ESP32-P4 (V1.2) — 10.1 inches 1024 x 600 landscape touchscreen with 15 cards, powered by ESP32-P4."
 ---
 <!-- =============================================================================
 GENERATED — do not edit by hand.
@@ -10,44 +10,41 @@ community/catalog-fragment.json and community/STATUS.md.
 
 <!--@include: ../parts/warning.md-->
 
-# 10.1-inch Waveshare ESP32-P4-WIFI6-Touch-LCD-10.1
+# 10.1-inch Elecrow CrowPanel Advanced 10.1 ESP32-P4 (V1.2)
 
-The **Waveshare ESP32-P4-WIFI6-Touch-LCD-10.1** is a 10.1-inch landscape
-touchscreen powered by **ESP32-P4**, with room for **20 cards**
+The **Elecrow CrowPanel Advanced 10.1 ESP32-P4 (V1.2)** is a 10.1-inch landscape
+touchscreen powered by **ESP32-P4**, with room for **15 cards**
 on the home screen.
 
-Community port contributed via [Issue #838](https://github.com/jtenniswood/espcontrol/issues/838) by @sbuchbauer.
+Community port contributed via [Issue #133](https://github.com/lamiskin/espcontrol-community-devices/issues/133#issuecomment-5741655103) by @schnoog.
 
-::: tip Hardware-verified
-This device has been verified on real hardware — it compiles, flashes, and runs EspControl correctly.
-
-Confirmed by @slampton ([#166](https://github.com/lamiskin/espcontrol-community-devices/pull/166)) at `community-v0.11.0-upstream.v2.10.0`.
+::: warning Not yet hardware-verified
+This device compiles and is flashable, but nobody has confirmed it on real hardware yet. It may not work. If you own this panel, [verifying it](/reference/support-policy#hardware-verification) is the most valuable contribution you can make.
 :::
 ::: tip Full upstream feature parity
 This device supports the full upstream feature set — nothing is disabled or unavailable here.
 :::
-
-<video controls playsinline preload="metadata" style="max-width: 100%;" src="/images/waveshare-esp32-p4-touch-lcd-10-verified-1.mp4">
-  Your browser doesn't support embedded video —
-  [download it directly](/images/waveshare-esp32-p4-touch-lcd-10-verified-1.mp4) instead.
-</video>
 
 ## Specifications
 
 | | |
 |---|---|
 | **Screen size** | 10.1 inches |
-| **Resolution** | 1280 x 800 |
+| **Resolution** | 1024 x 600 |
 | **Orientation** | Landscape |
 | **Processor** | ESP32-P4 |
-| **Card grid** | 5 × 4 (20 cards) |
+| **Card grid** | 5 × 3 (15 cards) |
+
+## Additional hardware
+
+- **Speaker + microphone** — PDM mic and an external I2S speaker amp, so Home Assistant can cast TTS announcements and media to the panel. Pins contributed and hardware-confirmed by @schnoog ([issue #133](https://github.com/lamiskin/espcontrol-community-devices/issues/133)); the media-player wiring built on top of his confirmed microphone/speaker config is not independently verified yet.
 
 ## Install
 
 Connect the display to your computer with a **USB-C data cable**, then click
 the button below (Chrome or Edge on desktop).
 
-<EspInstallButton slug="waveshare-esp32-p4-touch-lcd-10" />
+<EspInstallButton slug="crowpanel-esp32-p4-adv-101-v12" />
 
 For WiFi setup and Home Assistant pairing the flow is identical to official
 EspControl — follow the [Install guide](/getting-started/install).
@@ -66,7 +63,7 @@ Export your configuration from **Settings > Backup** first if the panel is
 still accessible.
 :::
 
-<EspInstallButton slug="waveshare-esp32-p4-touch-lcd-10" variant="recovery" />
+<EspInstallButton slug="crowpanel-esp32-p4-adv-101-v12" variant="recovery" />
 
 ## ESPHome Manual Setup
 
@@ -84,7 +81,7 @@ wifi:
 packages:
   setup:
     url: https://github.com/lamiskin/espcontrol-community-devices/
-    file: devices/waveshare-esp32-p4-touch-lcd-10/packages.yaml
+    file: devices/crowpanel-esp32-p4-adv-101-v12/packages.yaml
     refresh: 1s
 ```
 
