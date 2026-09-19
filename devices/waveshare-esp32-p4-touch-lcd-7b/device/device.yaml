@@ -151,6 +151,15 @@ esphome:
       then:
         - lambda: |-
             ESP_LOGI("waveshare_p4_7b", "Waveshare ESP32-P4-WIFI6-Touch-LCD-7B boot");
+    # The GT911's reset is tied to the LCD reset line (GPIO33) - the vendor BSP
+    # comments it as "Shared with LCD reset" and wires no dedicated touch reset.
+    # The display driver drives that line during init, so the touch controller is
+    # still coming out of reset when the touchscreen driver first probes it. Give
+    # it time to settle, exactly as the waveshare-10 profile does for the same
+    # shared-reset arrangement.
+    - priority: -150
+      then:
+        - delay: 300ms
     - priority: -100
       then:
         - lambda: 'id(screen_rotation_ready) = true;'
@@ -295,10 +304,18 @@ touchscreen:
     id: my_touchscreen
     display: my_display
     i2c_id: bus_a
-    # The 7B wires neither the GT911 reset nor its interrupt: the vendor BSP
-    # sets both to GPIO_NUM_NC, and GPIO21/22 are the CAN pins on this board.
-    # ESPHome polls the controller over I2C instead. Address is the 0x5D
-    # default (0x14 is only used when INT is pulled high at power-up).
+    # Run after the display so the shared reset line is already released.
+    setup_priority: -200
+    # The 7B wires neither a dedicated GT911 reset nor its interrupt: the vendor
+    # BSP sets BSP_LCD_TOUCH_RST and BSP_LCD_TOUCH_INT to GPIO_NUM_NC (GPIO21/22
+    # are the CAN pins here). ESPHome polls over I2C and falls back from 0x5D to
+    # 0x14 on its own, so no address is pinned.
+    # Orientation follows the BSP's bsp_touch_new() default for this panel:
+    # swap_xy 0, mirror_x 1, mirror_y 1.
+    transform:
+      swap_xy: false
+      mirror_x: true
+      mirror_y: true
     on_touch:
       - script.execute: cover_art_pause_after_touch
       - script.wait: cover_art_pause_after_touch
