@@ -172,11 +172,11 @@ packages:
 
 # --- community hosting overrides ---
 web_server:
-  js_url: https://bassrock.github.io/espcontrol-community-devices/webserver/www.js?device=${device_slug}&v=${firmware_version}&ui=8feea0432583
+  js_url: https://lamiskin.github.io/espcontrol-community-devices/webserver/www.js?device=${device_slug}&v=${firmware_version}&ui=8feea0432583
 
 update:
   - id: !extend firmware_update
-    source: https://bassrock.github.io/espcontrol-community-devices/firmware/${firmware_manifest_slug}/manifest.json
+    source: https://lamiskin.github.io/espcontrol-community-devices/firmware/${firmware_manifest_slug}/manifest.json
 
 # Community firmware is served from GitHub Release assets, whose download URL
 # 302-redirects to a ~950-char signed CDN URL. esp_http_client's default
