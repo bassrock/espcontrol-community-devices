@@ -43,9 +43,9 @@ All values are taken from the vendor BSP at
 
 ## Status
 
-**Untested** — config validates against the pinned upstream (ESPHome 2026.9.0,
-espcontrol v2.10.0) and all repo validators pass, but has not yet been confirmed
-on hardware. If you flash it, please report back.
+**Working** — confirmed on real hardware by @bassrock at
+`community-v0.11.0-upstream.v2.10.0` (ESPHome 2026.9.0, espcontrol v2.10.0):
+boots, touch works, and the card grid renders live Home Assistant data.
 
 ## Quick links
 
